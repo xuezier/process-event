@@ -9,9 +9,10 @@ function ProcessEvent(fun) {
   this._catch = undefined;
 
   var self = this;
-  setTimeout(function() {
-    fun.call(self);
-  });
+  if (fun instanceof Function)
+    setTimeout(function() {
+      fun.call(self);
+    });
 }
 
 /**
@@ -34,7 +35,7 @@ ProcessEvent.prototype.register = function(eventName, event) {
 ProcessEvent.prototype.emit = function(eventName, data) {
   var eventId = this._eventIdGrow++;
 
-  this._run(eventId, eventName, data);
+  return this._run(eventId, eventName, data);
 };
 
 ProcessEvent.prototype._emit = ProcessEvent.prototype.emit;
@@ -65,6 +66,7 @@ ProcessEvent.prototype._run = function(eventId, eventName, data) {
   } else {
     this._runCatch(eventName, new Error(eventName + ' is not a registered event'));
   }
+  return this;
 };
 
 /**
