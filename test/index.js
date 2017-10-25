@@ -1,6 +1,6 @@
 'use strict';
 
-var ProcessEvent = require('../src');
+var ProcessEvent = require('../index');
 
 ProcessEvent(function() {
   console.log(123);
