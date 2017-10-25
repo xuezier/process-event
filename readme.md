@@ -33,7 +33,7 @@ ProcessEvent(function(){
 ## 对比 *Promise* 链式结构
 ```javascript
 new Promise(function(resolve){
-  console.log('start);
+  console.log('start‘);
 
   resolve(1);
 }).then(function(d){
