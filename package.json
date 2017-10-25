@@ -1,0 +1,27 @@
+{
+  "name": "process-event",
+  "version": "1.0.0",
+  "description": "event process control",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xuezier/process-event.git"
+  },
+  "keywords": [
+    "event",
+    "process",
+    "promise"
+  ],
+  "author": "xuezi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xuezier/process-event/issues"
+  },
+  "homepage": "https://github.com/xuezier/process-event#readme"
+}
