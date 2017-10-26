@@ -37,7 +37,7 @@ ProcessEvent.prototype.register = function(eventName, event) {
 ProcessEvent.prototype.emit = function(process, eventName, data) {
   var self = this;
   if (process instanceof ProcessEvent) {
-    self = ProcessEvent;
+    self = process;
   } else {
     data = eventName;
     eventName = process;

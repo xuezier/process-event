@@ -63,5 +63,36 @@ new Promise(function(resolve){
 
 ![processevent](http://ofn8y0v16.bkt.clouddn.com/processevent.jpg?imageView2/2/w/800/q/99)
 
+## 远程调用
+```javascript
+var p1 = ProcessEvent(function(){
+  console.log('i am p1');
+}).register('a', function(d){
+  console.log('p1-a', d);
+  this.emit('b', 'p1-b');
+}).register('b', function(d){
+  console.log('p1-b', d);
+  this.emit('c', 'p1-c');
+}).register('c', function(d){
+  console.log('p1-c', d);
+});
+
+var p2 = ProcessEvent(function(){
+  console.log('i am p2');
+  this.emit('a', 'p2-a');
+}).register('a', function(d){
+  console.log('p2-a', d);
+  this.emit(p1, 'b', 'p2-b');
+});
+
+// out put
+// i am p1
+// i am p2
+// p2-a p2-a
+// p1-b p2-b
+// p1-c p1-c
+```
+![processevent](http://ofn8y0v16.bkt.clouddn.com/processevent.png)
+
 [npm-image]: https://img.shields.io/npm/v/process-event.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/process-event
